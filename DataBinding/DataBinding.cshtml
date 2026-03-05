@@ -1,0 +1,39 @@
+﻿@page
+@using DataBinding.Pages
+@model DataBinding.Pages.DataBindingModel
+
+<h2>Data Binding</h2>
+
+<form method="post">
+    Name:
+    <input asp-for="Person.name" />
+
+    Age:
+    <input asp-for="Person.age" />
+
+    Id:
+    <input asp-for="Person.id" />
+
+    <input type="submit" value="Submit" />
+</form>
+
+@if (Model.Person != null)
+{
+    <h3>Submitted Data:</h3>
+    <table border="3">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Id</th>
+        </tr>
+        @foreach (var person in DataBindingModel.People)
+        {
+        <tr>
+            <td>@person.name</td>
+            <td>@person.age</td>
+            <td>@person.id</td>
+        </tr>
+        }
+    </table>
+
+}
